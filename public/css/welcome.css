@@ -1,0 +1,105 @@
+@import url(http://fonts.googleapis.com/css?family=Courgette:400,100,100italic,300,300ita‌lic,400italic,500,500italic,700,700italic,900italic,900);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,100,100italic,300,300ita‌lic,400italic,500,500italic,700,700italic,900italic,900);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌lic,400italic,500,500italic,700,700italic,900italic,900);
+@media screen {
+    .content {
+        min-height: 380px;
+        min-width: 300px;
+    }
+}
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+.content {
+    background: linear-gradient( RGBA(14,5,35,0.3),rgba(70, 65, 80, 0.3) ), url('/wallpaper.jpg');
+    background-color: RGB(14,2,35);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+.text {
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: azure;
+}
+h1{
+    font-size: 59px;
+    margin: 10px;
+    font-family: Courgette, sans-serif;
+}
+h1:hover {
+    font-size: 61px;
+}
+p {
+    font-size: 25px;
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+}
+.footer {
+    position: absolute;
+    font-size: 25px;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: azure;
+}
+
+.footer a{
+    text-decoration: none;
+    color:azure;
+}
+/*********************************************BUTTONS*******************************************/
+.buttons {
+    left: 41%;
+    top: 64%;
+    position: absolute;
+}
+.btn1 {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #e7e7e7;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 40px;
+    margin-right: 5px;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}
+.btn2 {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #e7e7e7;
+    border-radius:50px;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}
+.btn3 {
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #e7e7e7;
+    border-radius:50px;
+    cursor: pointer;
+    margin-left: 110px;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+}
+.btn1:hover, .btn2:hover, .btn3:hover{
+    background-color: white;
+    opacity: 50%;
+    color:#4c534c;
+}
+
