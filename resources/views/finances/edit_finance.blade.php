@@ -1,6 +1,7 @@
 @extends('/layouts/main') <!-- code what is repeatable we are just copying from main.blade.php-->
 @section('title', '| Update budget')
     @section('content')
+    @if (isset(Auth::user()->id) && Auth::user()->id == $finance->user_id)
         <form method="POST" action="/finances/{{ $finance->id }}">
             @csrf <!--if one website pretends to be other website -->
             @method('PUT')
@@ -12,7 +13,7 @@
                             <button class="btn btn-outline-secondary" type="button">Year</button>
                         </div>
                         <select name="year" class="custom-select @error('year') text-danger @enderror" required>
-                            <option selected>{{ $finance->year }}</option>
+                            <option value="" selected>{{ $finance->year }}</option>
                             <option name="year" value="2022">2022</option>
                             <option name="year" value="2023">2023</option>
                             <option name="year" value="2024">2024</option>
@@ -35,7 +36,7 @@
                             <button class="btn btn-outline-secondary" type="button">Month</button>
                         </div>
                         <select name="month_id" class="custom-select @error('month_id') text-danger @enderror" required>
-                            <option selected value="{{ $finance->month_id }}">{{ $finance->month->month }}</option>
+                            <option value="" selected value="{{ $finance->month_id }}">{{ $finance->month->month }}</option>
                             <option name="month_id" value="1">January</option>
                             <option name="month_id" value="2">February</option>
                             <option name="month_id" value="3">March</option>
@@ -48,7 +49,7 @@
                             <option name="month_id" value="10">October</option>
                             <option name="month_id" value="11">November</option>
                             <option name="month_id" value="12">December</option>
-                            @error('year')
+                            @error('month_id')
                             <p class="text-danger">
                                 {{ $message }}
                             </p>
@@ -127,7 +128,8 @@
                         </div>
                     </form>
                 </div>
-                <button class="d-grid gap-2 col-3 mx-auto text-wrap w-25" type="submit">{{ __('Add') }}</button>
+                <button class="d-grid gap-2 col-3 mx-auto text-wrap w-25" type="submit">{{ __('Edit') }}</button>
             </div>
         </form>
+        @endif
     @endsection

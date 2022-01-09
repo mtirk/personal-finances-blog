@@ -7,6 +7,15 @@
         <link rel="stylesheet" type="text/css" href="{{ url('/css/welcome.css') }}" />
     </head>
     <body>
+        @if (session()->has('message'))
+        <div class="w-4/5 m-auto mt-10 pl-2">
+            <p class="text-danger">
+                <b>
+                {{ session()->get('message') }}
+                </b>
+            </p>
+        </div>
+        @endif
         <div class="content">
             <div class="text">
                 <h1 class="text-center">Want to plan your budget?</h1>

@@ -1,10 +1,10 @@
 @extends('/layouts/main') <!-- code what is repeatable we are just copying from main.blade.php-->
 @section('title', '| Update goal')
     @section('content')
+    @if (isset(Auth::user()->id) && Auth::user()->id == $goal->user_id)
         <form class="form" method="POST" action="/goals/{{ $goal->slug }}" >
             @csrf <!--if one website pretends to be other website -->
             @method('PUT')<!-- transform POST method to PUT method-->
-
             <div class="container">
                 <div class="mt-2 mb-5">
                     <h1>{{ __('Update goal') }}</h1>
@@ -31,3 +31,4 @@
             </div>
         </form>
     @endsection
+    @endif

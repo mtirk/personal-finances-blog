@@ -10,8 +10,8 @@
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary" type="button">Year</button>
                         </div>
-                        <select name="year" class="custom-select" required>
-                            <option selected>Choose...</option>
+                        <select name="year" class="custom-select @error('year') text-danger @enderror" required>
+                            <option value="" selected>Choose...</option>
                             <option name="year" value="2022">2022</option>
                             <option name="year" value="2023">2023</option>
                             <option name="year" value="2024">2024</option>
@@ -20,12 +20,12 @@
                             <option name="year" value="2027">2027</option>
                             <option name="year" value="2028">2028</option>
                             <option name="year" value="2029">2029</option>
+                            @error('year')
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </select>
-                        @error('year')
-                        <p class="text-danger">
-                            {{ $message }}
-                        </p>
-                        @enderror
                     </div>
                 </div>
 
@@ -33,8 +33,8 @@
                         <div class="input-group-prepend">
                             <button class="btn btn-outline-secondary" type="button">Month</button>
                         </div>
-                        <select name="month_id" class="custom-select">
-                            <option selected>Choose...</option>
+                        <select name="month_id" class="custom-select @error('month_id') text-danger @enderror" required>
+                            <option value="" selected>Choose...</option>
                             <option name="month_id" value="1">January</option>
                             <option name="month_id" value="2">February</option>
                             <option name="month_id" value="3">March</option>
@@ -47,6 +47,11 @@
                             <option name="month_id" value="10">October</option>
                             <option name="month_id" value="11">November</option>
                             <option name="month_id" value="12">December</option>
+                            @error('month_id')
+                            <p class="text-danger">
+                                {{ $message }}
+                            </p>
+                            @enderror
                         </select>
                     </div>
                 <div class="row">

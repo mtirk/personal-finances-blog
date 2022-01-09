@@ -34,6 +34,15 @@
                 {{ old('remember') ? 'checked' : '' }}> 
             <span>{{ __('Remember me') }}</span>
             </label>
+            <div class="form-group row">
+                <div class="checkbox">
+                    <p> Forgot your password?
+                        <label>
+                            <a href="{{ route('forget.password.get') }}">Reset Password</a>
+                        </label>
+                    </p>
+                </div>
+            </div>
             <button class="d-grid gap-2 col-3 mx-auto text-wrap w-50" type="submit">{{ __('Sign in') }}</button>
         </div>
         <hr class="m-1">

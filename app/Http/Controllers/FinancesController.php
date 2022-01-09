@@ -8,6 +8,10 @@ use DB;
 
 class FinancesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +43,9 @@ class FinancesController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
+            'month_id' => 'required',
             'year' => 'required'
         ]);
 
