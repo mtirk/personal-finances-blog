@@ -27,16 +27,31 @@
          <div class="card">
             <span class="mb-1">Created on <b>{{ date('jS M Y', strtotime($finance->updated_at))}}</b></span>
             <h1 class="mb-4 mt-2 text-center">{{ $finance->month->month }}</h1>
-            <p class="fs-4 mx-4">You spent  
-               <a href="/finances/{{ $finance->id }}" class="text-decoration-none text-dark">
-                  <b>{{ ($finance->housing) + ($finance->transportation) + ($finance->food) + ($finance->utilities) + ($finance->clothing) 
+            @if (is_null($finance->income))
+               <p class="fs-4 mx-4">You spent  
+                  <a href="/finances/{{ $finance->id }}" class="text-decoration-none text-dark">
+                     <b>{{ ($finance->housing) + ($finance->transportation) + ($finance->food) + ($finance->utilities) + ($finance->clothing) 
                      + ($finance->healthcare) + ($finance->insurance) + ($finance->household_supplies) + ($finance->personal)
                      + ($finance->debt) + ($finance->retirement) + ($finance->education) + ($finance->savings) + ($finance->gifts)
-                     + ($finance->entertainment) + ($finance->unexpected)}} 
-                  </b>
+                     + ($finance->entertainment) + ($finance->unexpected) }} 
+                     </b>
+                  @else
+                     <p class="fs-4 mx-4">You saved  
+                        <b>{{  $finance->income - (($finance->housing) + ($finance->transportation) + ($finance->food) + ($finance->utilities) + ($finance->clothing) 
+                              + ($finance->healthcare) + ($finance->insurance) + ($finance->household_supplies) + ($finance->personal)
+                              + ($finance->debt) + ($finance->retirement) + ($finance->education) + ($finance->savings) + ($finance->gifts)
+                              + ($finance->entertainment) + ($finance->unexpected)) }}
+                        </b>
+                     <p class="fs-4 mx-4">And you spent 
+                        <a href="/finances/{{ $finance->id }}" class="text-decoration-none text-dark">
+                           <b>{{  ($finance->housing) + ($finance->transportation) + ($finance->food) + ($finance->utilities) + ($finance->clothing) 
+                              + ($finance->healthcare) + ($finance->insurance) + ($finance->household_supplies) + ($finance->personal)
+                              + ($finance->debt) + ($finance->retirement) + ($finance->education) + ($finance->savings) + ($finance->gifts)
+                              + ($finance->entertainment) + ($finance->unexpected) }}
+                           </b>
+                  @endif
                </a>
             </p>
-
             <div class="d-grid gap-2 d-inline-flex justify-content-md-end">
                <button type="button" class="btn btn-light btn-sm border"> 
                   <a href="/finances/{{ $finance->id }}/edit" class="btn p-0" role="button">

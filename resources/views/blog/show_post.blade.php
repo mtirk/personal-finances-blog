@@ -15,6 +15,7 @@
         <hr />
         <h4 class="my-3">Comments: </h4>
         @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
+        @if(Auth::check()) 
         <p class="fs-4 my-3">Add comment</p>
         <form method="post" action="{{ route('comment/add') }}">
             @csrf
@@ -26,5 +27,6 @@
                 <input type="submit" class="btn btn-warning" value="Add Comment" />
             </div>
         </form>
+        @endif 
     </div>
     @endsection

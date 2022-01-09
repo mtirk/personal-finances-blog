@@ -15,6 +15,7 @@ class PlanFinancesTable extends Migration
     {
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
+            $table->double('income')->nullable(true);
             $table->double('housing')->nullable(true);
             $table->double('transportation')->nullable(true);
             $table->double('food')->nullable(true);

@@ -8,37 +8,26 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
+    //visas funkcijas izņemot 'index' un 'show' tiks parādītas tikai lietotājiem, kas
+    //būs pieslēgušies sistēmai
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //lai parādītu visus rakstus (kopējā skatā) iekš emuāra
     public function index()
     {
         return view('blog\blog')
             ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   //lai izveidotu jaunu rakstu
     public function create()
     {
         return view('blog\create_post');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //lai izveidotā raksta lauki tiktu saglabāti datubāzē
     public function store(Request $request)
     {
         $request->validate([
@@ -47,15 +36,15 @@ class PostsController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        $newImageName = uniqid() . '-' . $request->title . '.' . //saves image name with unique id and post title
+        $newImageName = uniqid() . '-' . $request->title . '.' . //saglabās pievienotās bildes vārdu ar unikālu id un nosaukumu
         $request->image->extension();
 
-        $request->image->move(public_path('images'), $newImageName); //move added images to public folder
+        $request->image->move(public_path('images'), $newImageName); //lai pievienotās bildes novirzītu public mapē
 
         Post::create([
             'title' => $request->input('title'),
             'body' => $request->input('body'),
-            'slug' => SlugService::createSlug(Post::class, 'slug', 
+            'slug' => SlugService::createSlug(Post::class, 'slug', //izveidot slug, ko izmantos id vietā
             $request->title),
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
@@ -64,37 +53,22 @@ class PostsController extends Controller
         return redirect('blog')->with('message', 'Your post has been added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
-     */
+    //lai parādītu rakstu pēc slug, kas ir kā id, bet lai tas lietotājam būtu labāk salasāms
+    //tas ir veidots no raksta nosaukuma
     public function show($slug)
     {
         return view('blog\show_post')
             ->with('post', Post::where('slug', $slug)->first());
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //rediģēšana atlasot no datubāzes pēc slug
     public function edit($slug)
     {
         return view('blog\edit_post')
             ->with('post', Post::where('slug', $slug)->first());
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $slug
-     * @return \Illuminate\Http\Response
-     */
+    //izmainīto datu saglabāšana datubāzē
     public function update(Request $request, $slug)
     {
         $request->validate([
@@ -115,12 +89,7 @@ class PostsController extends Controller
             ->with('message', 'Your post has been updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   //raksta dzēšanas funkcija
     public function destroy($slug)
     {
         $post = Post::where('slug', $slug);

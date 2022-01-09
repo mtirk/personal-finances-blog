@@ -58,6 +58,10 @@
                     <form>
                         <div class="table-responsive">
                             <table class="table table-m table-borderless">
+                                <tr class="mb-2">    
+                                    <th class="align-middle text-center"><h5>Your income :</h5></th>    
+                                    <td><input type="number" step="0.01" min="0" class="text-center" name="income" /></td>    
+                                </tr>
                                 <tr>    
                                     <th class="align-middle text-center">Housing :</th>    
                                     <td><input type="number" step="0.01" min="0" class="text-center" name="housing" /></td>    

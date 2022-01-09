@@ -1,8 +1,8 @@
-@if (Auth::check())
+@if (Auth::check()) <!-- navigācijas josla tiks rādīta tikai lietotājiem, kas pieslēgušies -->
 <div class="nav wrap">
     <div class="nav left">
         <li class="nav-item">
-            <a href="/home" class="nav-link {{ (request()->is('home')) ? 'active' : '' }}">Home</a>
+            <a href="/home" class="nav-link {{ (request()->is('home')) ? 'active' : '' }}">Home</a> <!-- tiek pārbaudīts kura sadaļa ir jāuzrāda kā aktīvā -->
         </li>
         <li class="nav-item">
             <a class="nav-link {{ (request()->is('finances')) ? 'active' : '' }}" href="/finances">Finances</a>

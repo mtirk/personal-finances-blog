@@ -13,7 +13,7 @@
                             <button class="btn btn-outline-secondary" type="button">Year</button>
                         </div>
                         <select name="year" class="custom-select @error('year') text-danger @enderror" required>
-                            <option value="" selected>{{ $finance->year }}</option>
+                            <option value="" selected>Choose...</option>
                             <option name="year" value="2022">2022</option>
                             <option name="year" value="2023">2023</option>
                             <option name="year" value="2024">2024</option>
@@ -36,7 +36,7 @@
                             <button class="btn btn-outline-secondary" type="button">Month</button>
                         </div>
                         <select name="month_id" class="custom-select @error('month_id') text-danger @enderror" required>
-                            <option value="" selected value="{{ $finance->month_id }}">{{ $finance->month->month }}</option>
+                            <option selected value="">Choose...</option>
                             <option name="month_id" value="1">January</option>
                             <option name="month_id" value="2">February</option>
                             <option name="month_id" value="3">March</option>
@@ -60,6 +60,10 @@
                     <form>
                         <div class="table-responsive">
                             <table class="table table-m table-borderless">
+                                <tr class="mb-2">    
+                                    <th class="align-middle text-center"><h5>Your income :</h5></th>    
+                                    <td><input type="number" step="0.01" min="0" class="text-center" name="income" value="{{ $finance->income }}"/></td>    
+                                </tr>
                                 <tr>    
                                     <th class="align-middle text-center">Housing :</th>    
                                     <td><input type="number" step="0.01" min="0" class="text-center" name="housing" value="{{ $finance->housing }}"/></td>    

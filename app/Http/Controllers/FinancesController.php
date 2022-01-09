@@ -51,6 +51,7 @@ class FinancesController extends Controller
 
         Finance::create([
             'housing' => $request->input('housing'),
+            'income' => $request->input('income'),
             'transportation' => $request->input('transportation'),
             'food' => $request->input('food'),
             'utilities' => $request->input('utilities'),
@@ -138,6 +139,7 @@ class FinancesController extends Controller
         Finance::where('id', $id)
             ->update([
             'housing' => $request->input('housing'),
+            'income' => $request->input('income'),
             'transportation' => $request->input('transportation'),
             'food' => $request->input('food'),
             'utilities' => $request->input('utilities'),

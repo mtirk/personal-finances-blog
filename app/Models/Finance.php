@@ -11,6 +11,7 @@ class Finance extends Model
 
     protected $fillable = [
         'housing', 
+        'income',
         'transportation', 
         'food', 
         'utilities', 

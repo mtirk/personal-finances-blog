@@ -1,4 +1,4 @@
-@extends('/layouts/main') <!-- code what is repeatable we are just copying from main.blade.php-->
+@extends('/layouts/main') <!-- kods, kas atkārtojas tiek saglabāts main.blade.php -->
 @section('title', '| Update goal')
     @section('content')
     @if (isset(Auth::user()->id) && Auth::user()->id == $goal->user_id)
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" name="description" placeholder="Description...">{{ $goal->description }}</textarea>  
+                    <textarea class="form-control" name="description" placeholder="Description...">{{ $goal->description }}</textarea> <!-- tiek ievietots jau datubāzē saglabātā vērtība --> 
                 </div>
 
                 <label for="finish">Due date: </label>
@@ -30,5 +30,6 @@
                 <button class="d-grid gap-2 col-3 mx-auto" type="submit">{{ __('Submit') }}</button>
             </div>
         </form>
-    @endsection
     @endif
+    @endsection
+   

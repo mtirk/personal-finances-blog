@@ -31,26 +31,27 @@
             <a href="/blog/{{ $post->slug }}">
                Keep reading
             </a>
-
+            @if (Auth::check())
             @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id || Auth::user()->user_type == 'Administrator') <!--checking if logged in user_id is the same as post id to see if can edit-->
-            <div class="d-grid gap-2 d-inline-flex justify-content-md-end">
-            @if (Auth::user()->user_type != 'Administrator')
-               <button type="button" class="btn btn-light btn-sm border"> 
-                  <a href="/blog/{{ $post->slug }}/edit" class="btn p-0" role="button">
-                     Edit
-                  </a>
-               </button>
-            @endif
-               <div>
-                  <form action="/blog/{{ $post->slug }}" method="POST">
-                     @csrf
-                     @method('delete')
-                     <button class="btn btn-danger btn-sm p-2 border" type="submit">
-                        Delete
-                     </button>
-                  </form>
+               <div class="d-grid gap-2 d-inline-flex justify-content-md-end">
+               @if (Auth::user()->user_type != 'Administrator')
+                  <button type="button" class="btn btn-light btn-sm border"> 
+                     <a href="/blog/{{ $post->slug }}/edit" class="btn p-0" role="button">
+                        Edit
+                     </a>
+                  </button>
+               @endif
+                  <div>
+                     <form action="/blog/{{ $post->slug }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger btn-sm p-2 border" type="submit">
+                           Delete
+                        </button>
+                     </form>
+                  </div>
                </div>
-            </div>
+            @endif
             @endif
          </div>
       </div>
