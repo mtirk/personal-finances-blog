@@ -32,4 +32,12 @@ class CommentController extends Controller
         return back();
 
     }
+
+    public function destroy($id)
+    {
+        Comment::destroy($id);
+
+        return redirect('/blog')
+        ->with('message', 'Your comment has been deleted!');
+    }
 }

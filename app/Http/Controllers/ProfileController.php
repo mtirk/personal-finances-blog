@@ -101,8 +101,7 @@ class ProfileController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->forceDelete();
+        User::destroy($id);
 
         return redirect('/')
         ->with('message', 'Your profile has been deleted!');

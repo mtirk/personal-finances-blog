@@ -18,7 +18,7 @@ class PostsController extends Controller
     public function index()
     {
         return view('blog\blog')
-            ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+            ->with('posts', Post::orderBy('updated_at', 'DESC')->paginate(5));
     }
 
    //lai izveidotu jaunu rakstu

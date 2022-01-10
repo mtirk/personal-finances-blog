@@ -37,7 +37,7 @@ class PlanFinancesTable extends Migration
             $table->unsignedBigInteger('month_id');
             $table->foreign('month_id')->references('id')->on('months');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users'); //foreign key to create_users_table table users
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');; //foreign key to create_users_table table users
         });
     }
 

@@ -61,7 +61,7 @@
                <form action="/finances/{{ $finance->id }}" method="POST">
                   @csrf
                   @method('delete')
-                  <button class="btn btn-danger btn-sm p-2 border" type="submit">
+                  <button class="btn btn-danger btn-sm p-2 border" type="submit" onclick="return confirm('Are you sure? This action can not be undone!')">
                      Delete
                   </button>
                </form>

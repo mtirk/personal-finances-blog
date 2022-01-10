@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('image_path');
             $table->timestamps(); // adds both created_at and updated_at columns
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users'); //foreign key to create_users_table table users
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');; //foreign key to create_users_table table users
         });
     }
 

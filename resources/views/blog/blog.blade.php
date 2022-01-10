@@ -23,7 +23,7 @@
    <div class="row">
    @foreach ($posts as $post)
       <div class="col-8">
-         <div class="card">
+         <div class="card mb-3">
             <h2>{{ $post->title }}</h2>
             <span class="mb-3">By <b>{{ $post->user->name }}, </b> Created on <b>{{ date('jS M Y', strtotime($post->updated_at))}}</b></span>
             <img class="post-img" src="{{ asset('images/' . $post->image_path) }}" alt="">
@@ -45,7 +45,7 @@
                      <form action="/blog/{{ $post->slug }}" method="POST">
                         @csrf
                         @method('delete')
-                        <button class="btn btn-danger btn-sm p-2 border" type="submit">
+                        <button class="btn btn-danger btn-sm p-2 border" type="submit" onclick="return confirm('Are you sure? This action can not be undone!')">
                            Delete
                         </button>
                      </form>
@@ -56,14 +56,5 @@
          </div>
       </div>
    @endforeach
-   <!--
-      <div class="col-4">
-         <div class="card">
-            <h3>Popular Post</h3>
-            <div class="fakeimg">Image</div><br>
-            <div class="fakeimg">Image</div><br>
-            <div class="fakeimg">Image</div>
-         </div>
-      </div>
-   </div> -->
+   {{ $posts->links() }}
 @endsection
