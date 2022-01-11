@@ -11,7 +11,7 @@
                      </a>
                 </button>
             <div>
-                <form action="/blog/{{ $comment->id }}" method="POST">
+                <form action="/comments/{{ $comment->id }}" method="POST">
                 @csrf
                 @method('delete')
                     <button class="btn btn-danger btn-sm p-2 border" type="submit" onclick="return confirm('Are you sure? This action can not be undone!')">

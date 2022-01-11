@@ -35,9 +35,8 @@ class CommentController extends Controller
 
     public function destroy($id)
     {
-        Comment::destroy($id);
-
-        return redirect('/blog')
-        ->with('message', 'Your comment has been deleted!');
+        $comment=Comment::where('id',$id)->first();
+        $comment->delete();
+        return back()->with('message', 'Your comment has been deleted!');;
     }
 }

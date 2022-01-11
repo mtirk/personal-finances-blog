@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,8 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         return view('profile\show_profile', compact('user'))
-            ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+            ->with('posts', Post::orderBy('updated_at', 'DESC')->get())
+            ->with('comments', Comment::orderBy('updated_at', 'DESC')->get());
     }
 
     /**

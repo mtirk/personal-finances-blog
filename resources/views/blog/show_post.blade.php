@@ -13,6 +13,15 @@
            {{ $post->body }} 
         </p>
         <hr />
+        @if (session()->has('message'))
+            <div class="w-4/5 m-auto mt-10 pl-2">
+                <p class="text-success">
+                    <b>
+                    {{ session()->get('message') }}
+                    </b>
+                </p>
+            </div>
+        @endif
         <h4 class="my-3">Comments: </h4>
         @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
         @if(Auth::check()) 

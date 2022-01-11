@@ -43,6 +43,7 @@ Route::resource('blog', PostsController::class); //CRUD functions
 //Routes for comments
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment/add');
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply/add');
+Route::delete('/comments/{id}', [CommentController::class, 'destroy']);
 
 //Routes for goals
 Route::get('goals', [GoalsController::class, 'index']);

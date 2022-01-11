@@ -21,7 +21,7 @@
                 <h1 class="text-center">Want to plan your budget?</h1>
                 <p class="text-center my-2">This page will help you to get better at managing your finances!</p>
             </div>
-            <div class="buttons d-grid gap-2 d-inline-flex">
+            <div class="buttons d-grid gap-2 d-inline-flex center">
                 <a class="btn1" href="{{ route('login') }}">{{__('Login') }}</a>
                 @if (Route::has('register'))
                     <a class="btn2" href="{{ route('register') }}">{{ __('Register') }}</a>

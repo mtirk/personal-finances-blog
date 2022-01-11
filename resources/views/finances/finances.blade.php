@@ -2,7 +2,7 @@
 @section('title', '| Finances')
 @section('content')
    <div class="header">
-      <h1>My finances</h1>
+      <h2>My finances</h2>
    </div>
 
    @if (session()->has('message'))
